@@ -1,1 +1,1 @@
-displaying the list of your current directory
+changing the working with the home directory
