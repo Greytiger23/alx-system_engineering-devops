@@ -1,1 +1,1 @@
-deleting a directory from tmp
+change the working directory back
