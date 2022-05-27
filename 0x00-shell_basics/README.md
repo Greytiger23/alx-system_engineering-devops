@@ -1,1 +1,1 @@
-changing the working with the home directory
+displaying contents in a long format
