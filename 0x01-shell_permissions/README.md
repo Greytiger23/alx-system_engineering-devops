@@ -1,1 +1,1 @@
-all permissions
+make directory and give permissions
