@@ -1,1 +1,1 @@
-change the working directory back
+list of all the files in both directories
