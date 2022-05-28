@@ -1,1 +1,1 @@
-print the current username
+list of groups
