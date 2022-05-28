@@ -1,1 +1,1 @@
-giving permission to group and owner and read
+persmission to multiple users
