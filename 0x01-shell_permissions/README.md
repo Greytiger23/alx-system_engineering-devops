@@ -1,1 +1,1 @@
-set mode as olleh
+all permissions
