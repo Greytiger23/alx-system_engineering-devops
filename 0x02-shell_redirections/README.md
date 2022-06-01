@@ -1,1 +1,1 @@
-creating a file with text
+writing a command into a file
