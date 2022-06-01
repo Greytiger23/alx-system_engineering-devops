@@ -1,1 +1,1 @@
-displaying contents of 2 files
+displaying 10 lines of a file
