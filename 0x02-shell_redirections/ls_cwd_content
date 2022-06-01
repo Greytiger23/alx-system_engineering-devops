@@ -1,1 +1,17 @@
 ls -la
+total 48
+drwxr-xr-x 2 root root 249 Jun  1 14:16 .
+drwxr-xr-x 7 root root 160 May 31 16:51 ..
+-rwxr--r-- 1 root root  32 May 31 19:43 0-hello_world
+-rwxr--r-- 1 root root  28 May 31 18:58 1-confused_smiley
+-rwxr--r-- 1 root root  29 May 31 19:58 2-hellofile
+-rwxr--r-- 1 root root  39 May 31 20:07 3-twofiles
+-rwxr--r-- 1 root root  35 May 31 20:27 4-lastlines
+-rwxr--r-- 1 root root  35 May 31 20:42 5-firstlines
+-rwxr--r-- 1 root root  40 May 31 21:11 6-third_line
+-rwxr--r-- 1 root root  78 May 31 22:11 7-file
+-rwxr--r-- 1 root root  37 Jun  1 14:19 8-cwd_state
+-rw-r--r-- 1 root root  76 May 31 22:15 \*\'Best
+-rw-r--r-- 1 root root   0 May 31 21:01 iacta
+-rw-r--r-- 1 root root   7 Jun  1 14:16 ls_cwd_content
+-rw-r--r-- 1 root root  30 Jun  1 14:00 README.md
