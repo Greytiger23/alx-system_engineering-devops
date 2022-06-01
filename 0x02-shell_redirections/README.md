@@ -1,1 +1,1 @@
-printing out hello world
+display a smiley face
