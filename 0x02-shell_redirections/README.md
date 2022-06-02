@@ -1,1 +1,1 @@
-writing a command into a file
+deleting all regular files with an extension
