@@ -1,1 +1,1 @@
-duplicating the last line
+counting the number of dicrectories and sub
