@@ -1,1 +1,1 @@
-deleting all regular files with an extension
+duplicating the last line
