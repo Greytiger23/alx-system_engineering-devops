@@ -1,0 +1,2 @@
+#!/bin/bash
+MYUSER="$USER" | echo "hello $MYUSER"
