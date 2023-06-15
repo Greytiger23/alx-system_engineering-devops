@@ -1,2 +1,2 @@
 #!/bin/bash
-echo -n "NUM=>>" | read NUM | printf "%.2f \n" $NUM
+read NUM | echo $((2#$NUM))
