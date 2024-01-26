@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# Bash script that displays
+for a in *; do
+	if [ -f "$a" ] && [[ "$a" != .* ]]; then
+		b=$(echo "$a" | cut -d'-' -f2-)
+		echo "$b"
+	fi
+done
