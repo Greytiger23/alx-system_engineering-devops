@@ -11,4 +11,4 @@ do
 		((m++))
 	done
 	((h++))
-done | head -n 70
+done
