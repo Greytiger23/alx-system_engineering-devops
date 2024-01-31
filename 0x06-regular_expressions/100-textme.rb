@@ -1,2 +1,2 @@
 #!/usr/bin/env ruby
-puts ARGV.scan(/\[from:(.*?)\] \[flags:(.*?)\]/).joimt(",")
+puts ARGV.scan(/\[from:(.*?)\] \[to:(.*?)\] \[flags:(.*?)\]/).joimt(",")
