@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# Bash script that displays listening ports
+echo "Active Internet connections (only servers)"
+echo "Proto Recv-Q Send-Q Local Address           Foreign Address
+         State       PID/Program name"
+lsof -i -P -n | grep LISTEN | awk '{print $1, $2, $3, $8}' |
+	while read proto recvq sendq local foreign state; do
+		pid=$(echo $pid | cut -d "/" -f 1)
+		name=$(ps -p $pid -o comm=)
+		echo "$proto     $recvq $sendq $local     $foreign"
+		"$state       $pid/$name"
+done
