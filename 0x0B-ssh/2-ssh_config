@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# configure the SSH configuration file for local SSH client
+Host 50840-web-01
+  IdentityFile ~/.ssh/school
+  PasswordAuthentication no
