@@ -1,12 +1,10 @@
 #!/usr/bin/env bash
 # Install nginx on your web-01
-echo "Updating the system"
+echo -e "Updating the system"
 apt-get update
-echo "Installing nginx"
-apt-get -y install nginx
-sudo service nginx start
-sudo ufw allow 'Ngnix HTTP'
-sed -i 's/^\s*listen\s*80;/    listen 80;/g' /etc/nginx/sites-available/default
+echo -e "Installing nginx"
+apt-get install -y nginx
+sed -i 's/^\s*listen\s*\(.*\)/\1/' /etc/nginx/sites-available/default
 service nginx restart
 echo "Hello World" > /var/www/html/index.html
 echo "Nginx installation complete"

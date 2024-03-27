@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+# Redirection must be a “301 Moved Permanently”
+if [ "$(id -u)" -ne 0 ]; then
+	echo "Please run this script"
+	exit 1
+fi
+configure_redirection() {
+	cat > /etc/nginx/sites-available/redirect_me <<EOF
+server {
+	listen 80;
+	listen [::]:80;
+
+
+	ubuntu _;
+
+	location /redirect_me {
+		return 301 https://www.example.com;
+	}
+}
+EOF
+	ln -sf /etc/nginx/sites-available/redirect_me /etc/nginx/sites-enabled/ || return 1
+	nginx -t || return 1
+	servie nginx restart || return 1
+}
+configure_redirection || exit 1
