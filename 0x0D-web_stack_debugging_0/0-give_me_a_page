@@ -1,2 +1,3 @@
 #!/usr/bin/env bash
-echo "Hello Holberton\n"
+# this is the answer file
+service apache2 start
