@@ -4,13 +4,11 @@ if ! command -v nginx &> /dev/null; then
 	echo "Nginx is not installed"
 	exit 1
 fi
-if curl -s 0:80 &> /dev/null
-then
+if curl -s 0:80 &> /dev/null; then
 	echo "Nginx is already listening on port 80"
 	exit 0
 fi
-if systemctl is-active --quiet nginx
-then
+if systemctl is-active --quiet nginx; then
 	echo "Nginx is already running but not listening to port 80"
 else
 	echo "Nginx is starting..."
@@ -19,11 +17,10 @@ else
 fi
 echo "Configuring Nginx to listen on port 80..."
 sed -i 's/^listen\s*80;$/listen 80 default_server;/g'
-      /etc/nginx/sites-available/default
+/etc/nginx/sites-available/default
 echo "Reloding Nginx..."
 systemctl reload nginx
-if curl -s 0:80 &> /dev/null
-then
+if curl -s 0:80 &> /dev/null; then
 	echo "Nginx is now listening on port 80"
 else
 	echo "Failed to configure Nginx to listen on port 80"
