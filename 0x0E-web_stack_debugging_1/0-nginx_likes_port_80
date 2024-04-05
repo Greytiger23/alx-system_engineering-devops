@@ -16,8 +16,7 @@ else
 	sleep 2
 fi
 echo "Configuring Nginx to listen on port 80..."
-sed -i 's/^listen\s*80;$/listen 80 default_server;/g'
-/etc/nginx/sites-available/default
+sed -i 's/^listen\s*80;$/listen 80 default_server;/g' /etc/nginx/sites-available/default
 echo "Reloding Nginx..."
 systemctl reload nginx
 if curl -s 0:80 &> /dev/null; then
