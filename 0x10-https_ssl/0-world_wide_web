@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+# Bash script that will display information about subdomains
+display_subdomain() {
+  local domain="$1"
+  local subdomain="$2"
+  local q=$(dig +short "$subdomain,$domain")
+  local a=$(dig +short "$subdomain.$domain" | awk 'NR==1 {print toupper($2)}')
+  echo "The subdomain $subdomain is a $a record and points to $q"
+}
+display_default() {
+  local domain="$1"
+  display_subdomain "$domain" "www"
+  display_subdomain "$domain" "lb-01"
+  display_subdomain "$domain" "web-01"
+  display_subdomain "$domain" "web-02"
+}
+main() {
+  local domain="$1"
+  local subdomain="$2"
+  if [ -z "$subdomain" ]; then
+    display_default "$domain"
+  else
+    display_subdomain "$domain" "$subdomain"
+  fi
+}
+if [ "$#" -lt 1 ] || [ "$#" -gt 2 ]; then
+    echo "Usage: $0 <domain> [subdomain]"
+    exit 1
+fi
+main "$@"
