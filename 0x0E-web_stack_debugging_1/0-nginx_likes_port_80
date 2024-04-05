@@ -1,28 +1,24 @@
 #!/usr/bin/env bash
 # Bash script with the minimum number of commands to automate your fix
+nginx -t
 if ! command -v nginx &> /dev/null; then
 	echo "Nginx is not installed"
 	exit 1
 fi
-if curl -s 0:80 &> /dev/null; then
-	echo "Nginx is already listening on port 80"
-	exit 0
-fi
-if systemctl is-active --quiet nginx; then
-	echo "Nginx is already running but not listening to port 80"
-else
+if ! pgrep nginx &> /dev/null then
 	echo "Nginx is starting..."
-	systemctl start nginx
-	sleep 2
+	service nginx start
 fi
-echo "Configuring Nginx to listen on port 80..."
-sed -i 's/^listen\s*80;$/listen 80 default_server;/g' /etc/nginx/sites-available/default
-echo "Reloding Nginx..."
-systemctl reload nginx
-if curl -s 0:80 &> /dev/null; then
-	echo "Nginx is now listening on port 80"
+if ! lsof -i :80 &> /dev/null; then
+	echo "Nginx is not listening on port 80"
 else
-	echo "Failed to configure Nginx to listen on port 80"
+	echo "Nginx is now listening on port 80"
 	exit 1
 fi
-exit 0
+if ! ufw status | grep "80" &> /dev/null; then
+	echo "Firewall is not allowing traffic on port 80, enabling it..."
+	ufw allow 80
+fi
+echo "Restarting Nginx..."
+service nginx restart
+echo "Nginx is now configured to listen on port 80"
