@@ -3,9 +3,8 @@
 display_subdomain() {
   local domain="$1"
   local subdomain="$2"
-  local q=$(dig +short "$subdomain,$domain")
-  local a=$(dig +short "$subdomain.$domain" | awk 'NR==1 {print toupper($2)}')
-  echo "The subdomain $subdomain is a $a record and points to $q"
+  local q=$(dig +short "$subdomain.$domain")
+  echo "The subdomain $subdomain is a A record and points to $q"
 }
 display_default() {
   local domain="$1"
