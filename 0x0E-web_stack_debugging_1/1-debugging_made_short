@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# make your fix short and sweet.
+nginx -t
+if ! command  -v nginx &> /dev/null || ! pgrep nginx &> /dev/null; then
+	echo "Nginx is not installed or running, starting it..."
+	nginx
+fi
+lsof -i :80 || (ufw allow 80 || nginx -s reload)
