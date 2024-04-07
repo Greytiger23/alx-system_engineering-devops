@@ -1,24 +1,33 @@
 #!/usr/bin/env bash
 # Bash script with the minimum number of commands to automate your fix
-nginx -t
+# check Nginx status
+sudo nginx -t
+# check if Nginx is installed
 if ! command -v nginx &> /dev/null; then
 	echo "Nginx is not installed"
 	exit 1
 fi
+# check if Nginx is listening on port 80
 if curl -s 0:80 &> /dev/null; then
         echo "Nginx is already listening on port 80"
         exit 0
 fi
-if systemctl is-active --quiet nginx; then
+# checkig if nginx is working
+if sudo service nginx status; then
         echo "Nginx is already running but not listening to port 80"
 else
         echo "Nginx is starting..."
-        service nginx start
+        sudo service nginx start
 fi
+# display that it is configuring
 echo "Configuring Nginx to listen on port 80..."
-sed -i 's/^listen\s*80;$/listen 80 default_server;/g' /etc/nginx/sites-available/default
+# configure if Nginx is listening on port 80
+sed -i 's/.*listen\s*80.*/listen 80;/g' /etc/nginx/sites-available/default
+# display words
 echo "Reloding Nginx..."
-service nginx reload
+# reload Nginx
+sudo service nginx reload
+# check if Nginx is listening on port 80
 if curl -s 0:80 &> /dev/null; then
         echo "Nginx is now listening on port 80"
 else
