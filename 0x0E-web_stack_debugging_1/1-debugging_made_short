@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 # make your fix short and sweet.
-service nginx -t || exit 1
-! command -v nginx &> /dev/null || ! pgrep nginx &> /dev/null || { echo "Nginx is not installed or running, starting it..." || nginx }
-lsof -i :80 || (ufw allow 80 || nginx -s reload)
+sudo nginx -t
+sudo service nginx start || sleep 2
+sudo nginx -t || sudo service nginx reload
