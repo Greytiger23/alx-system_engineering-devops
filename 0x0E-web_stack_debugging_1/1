@@ -1,8 +1,8 @@
 Hit:1 http://security.ubuntu.com/ubuntu focal-security InRelease
 Hit:2 http://archive.ubuntu.com/ubuntu focal InRelease
-Hit:3 http://ppa.launchpad.net/brightbox/ruby-ng/ubuntu focal InRelease
-Hit:4 http://archive.ubuntu.com/ubuntu focal-updates InRelease
-Hit:5 http://archive.ubuntu.com/ubuntu focal-backports InRelease
+Hit:3 http://archive.ubuntu.com/ubuntu focal-updates InRelease
+Hit:4 http://archive.ubuntu.com/ubuntu focal-backports InRelease
+Hit:5 http://ppa.launchpad.net/brightbox/ruby-ng/ubuntu focal InRelease
 Reading package lists...
 
 WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
@@ -12,20 +12,18 @@ Building dependency tree...
 Reading state information...
 nginx is already the newest version (1.18.0-0ubuntu1.4).
 0 upgraded, 0 newly installed, 0 to remove and 261 not upgraded.
-Nginx is already running but not listening to port 80
-Nginx is starting...
- * Starting nginx nginx
-   ...done.
 ./0-nginx_likes_port_80: line 16: nestat: command not found
 grep: invalid option -- 'p'
 Usage: grep [OPTION]... PATTERNS [FILE]...
 Try 'grep --help' for more information.
 Configuring Nginx to listen on port 80...
+sed: no input files
+./0-nginx_likes_port_80: line 21: /etc/nginx/sites-available/default: Permission denied
 Reloding Nginx...
  * Reloading nginx configuration nginx
    ...done.
+./0-nginx_likes_port_80: line 28: nestat: command not found
 grep: invalid option -- 'p'
 Usage: grep [OPTION]... PATTERNS [FILE]...
 Try 'grep --help' for more information.
-./0-nginx_likes_port_80: line 28: nestat: command not found
 Failed to configure Nginx to listen on port 80
