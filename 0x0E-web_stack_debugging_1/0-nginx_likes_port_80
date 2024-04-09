@@ -17,7 +17,7 @@ if ! nestat -tuln | grep -p ":80"; then
 	# display that it is configuring
 	echo "Configuring Nginx to listen on port 80..."
 	# configure if Nginx is listening on port 80
-	sed -i 's/.*listen\s*80.*;/listen 80;/g'
+	sed -i 's/^\s*listen\s*\(.*\)80/    listen 80/g'
 		/etc/nginx/sites-available/default
 	# display words
 	echo "Reloding Nginx..."
