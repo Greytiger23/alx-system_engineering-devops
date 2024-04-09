@@ -8,24 +8,22 @@ fi
 sudo apt-get update
 sudo apt install -y nginx
 # checkig if nginx is working
-if ! pgrep -x "nginx" > /dev/null; then
+if ! pgrep -x "nginx" &> /dev/null; then
         echo "Nginx is already running but not listening to port 80"
         echo "Nginx is starting..."
         sudo service nginx start
 fi
-if ! nestat -tuln | grep -p ":80"; then
+if ! nestat -tuln | grep -p ":80" &> /dev/null; then
 	# display that it is configuring
 	echo "Configuring Nginx to listen on port 80..."
 	# configure if Nginx is listening on port 80
 	sed -i 's/^\s*listen\s*\(.*\)80/    listen 80/g'
 		/etc/nginx/sites-available/default
-	# display words
-	echo "Reloding Nginx..."
 	# reload Nginx
 	sudo service nginx reload
 fi
 # check if Nginx is listening on port 80
-if nestat -tuln | grep -p ":80"; then
+if nestat -tuln | grep -p ":80" &> /dev/null; then
         echo "Nginx is now listening on port 80"
 	exit 0
 else
