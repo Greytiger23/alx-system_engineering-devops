@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
 # make your fix short and sweet.
-sudo nginx -t
-sudo service nginx start || sleep 2
-sudo nginx -t || sudo service nginx reload
+sudo service nginx start
+sed -i 's/.*listen\s*80.*/listen 80;/g' /etc/nginx/sites-available/default
