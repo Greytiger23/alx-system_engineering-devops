@@ -5,13 +5,14 @@ if ! command -v nginx &> /dev/null; then
 	echo "Nginx is not installed"
 	exit 1
 fi
+# update system
 sudo apt-get update
+# install nginx
 sudo apt install -y nginx
-# checkig if nginx is working
-if ! pgrep -x "nginx" &> /dev/null; then
-        echo "Nginx is already running but not listening to port 80"
-        echo "Nginx is starting..."
-        sudo service nginx start
+# check if nginx is running
+if ! pgrep nginx &> /dev/null; then
+    echo "Nginx is not running, starting it..."
+    service nginx start
 fi
 if ! nestat -tuln | grep -p ":80" &> /dev/null; then
 	# display that it is configuring
