@@ -17,7 +17,7 @@ if [ $? -ne 0 ]; then
         exit 1
 fi
 # compress the mysql dump into archive
-tar -czf "${archive_name}" "$dump_file"
+tar -czf "$archive_name" "$dump_file"
 # check if the compression is successful
 if [ $? -ne 0 ]; then
         echo "Error: Compression failed"
@@ -25,4 +25,10 @@ if [ $? -ne 0 ]; then
 fi
 # remove the mysql dump file
 rm "$dump_file"
-echo "Backup completed successfully."
+# check for string in archive file
+file_output=$(file "$archive_name")
+if [[ $file_output == *"grzip compressed data"* && $file_output == *"from Unix"* ]]; then
+	echo "Backup completed successfully."
+else
+	echo "Error: backup file format is incorrect"
+fi
