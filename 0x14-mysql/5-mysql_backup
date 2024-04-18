@@ -7,8 +7,6 @@ if [ -z "$1" ]; then
 fi
 # mysql dump file name
 dump_file="backup.sql"
-# compressed archive name format
-archive_name=$(date +"%d-%m-%Y").tar.gz
 # generate mysql dump
 mysqldump -u root -p"$1" --all-databases > "$dump_file"
 # check if the mysql dump is created
@@ -16,6 +14,13 @@ if [ $? -ne 0 ]; then
         echo "Error: MySQL dump failed"
         exit 1
 fi
+# if dump file is created
+if [ ! -s "$dump_file" ]; then
+        echo "Error: dump file is not created or is empty"
+        exit 1
+fi
+# compressed archive name format
+archive_name="$(date +"%d-%m-%Y").tar.gz"
 # compress the mysql dump into archive
 tar -czf "$archive_name" "$dump_file"
 # check if the compression is successful
@@ -25,10 +30,4 @@ if [ $? -ne 0 ]; then
 fi
 # remove the mysql dump file
 rm "$dump_file"
-# check for string in archive file
-file_output=$(file "$archive_name")
-if [[ $file_output == *"grzip compressed data"* && $file_output == *"from Unix"* ]]; then
-	echo "Backup completed successfully."
-else
-	echo "Error: backup file format is incorrect"
-fi
+echo "Backup completed successfully: $archive_name"
