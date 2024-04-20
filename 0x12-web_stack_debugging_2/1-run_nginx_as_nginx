@@ -7,6 +7,6 @@ sed -i 's/listen\s*80;/listen 8080;/g' /etc/nginx/sites-available/default
 # restart nginx
 sudo service nginx restart
 # check if nginx is running
-ps auxff | grep ngin[x]
+ps auxff | grep -q nginx
 # check if nginx is listening on port 8080
 nc -z 0 8080 ; echo $?
