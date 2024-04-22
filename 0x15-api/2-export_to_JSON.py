@@ -23,8 +23,8 @@ def get_todo(employee_id):
             "username": b
         })
     x = "{}.json".format(employee_id)
-    with open(x, 'w') as file:
-        json.dump(data, file)
+    with open(x, mode='w') as file:
+        json.dump(data, file, indent=4)
 
 
 if __name__ == "__main__":
