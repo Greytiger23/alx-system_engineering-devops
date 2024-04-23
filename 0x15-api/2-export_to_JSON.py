@@ -2,8 +2,8 @@
 """script to export data in the JSON format"""
 
 
-import requests
 import json
+import requests
 from sys import argv
 
 
@@ -23,8 +23,8 @@ def get_todo(employee_id):
             "username": b
         })
     x = "{}.json".format(employee_id)
-    with open(x, mode='w') as file:
-        json.dump(data, file, indent=4)
+    with open(x, 'w') as file:
+        json.dump(data, file)
 
 
 if __name__ == "__main__":
