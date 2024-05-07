@@ -1,7 +1,5 @@
 #!/usr/bin/python3
 """function that queries reddit and returns subscribers"""
-
-
 import requests
 
 
