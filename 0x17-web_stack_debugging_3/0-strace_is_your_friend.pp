@@ -1,8 +1,11 @@
-# 0-strace_is_your_friend.pp
-
-exec { 'fix_apache':
-  command     => '/bin/sed -i "s/SomeIncorrectDirective/CorrectDirective/g" /etc/apache2/apache2.conf',
-  path        => ['/bin', '/usr/bin'],
-  refreshonly => true,
-  subscribe   => Service['apache2'],
+# Puppet manifest to fix apache 500 error
+file{'/etc/apache2/sites-available/000-default.conf':
+  ensure  => file,
+  content => file('/path/to/000-default.conf'),
 }
+
+service{'apache2':
+  ensure  => running,
+  enable  => true,
+  require => File['/etc/apache2/sites-available/000-default.conf'],
+} 
