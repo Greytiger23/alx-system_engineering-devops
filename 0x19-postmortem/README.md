@@ -53,4 +53,10 @@ Tasks:
 
 •	Review and update our incident response process to ensure that incidents are escalated more quickly.
 
+0. https://drive.google.com/file/d/106PI5pPKXCBgBllDv_WC6-qtkpeyHC7T/view?usp=drivesdk
 
+1. https://drive.google.com/file/d/10Ov6t3ZpP3fTy766gPgzhTAzWMas05Ku/view?usp=drivesdk
+
+0. https://www.linkedin.com/posts/isabel-mothoa-672bb5204_alxengineering-activity-7195536217931710464-8VMK?utm_source=share&utm_medium=member_android
+
+1. https://www.linkedin.com/posts/isabel-mothoa-672bb5204_alxengineering-activity-7195541364338520064-9x_g?utm_source=combined_share_message&utm_medium=member_android
