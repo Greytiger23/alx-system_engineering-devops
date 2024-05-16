@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+# serve a page with Nginx
 server {
     listen 80;
     server_name _;
