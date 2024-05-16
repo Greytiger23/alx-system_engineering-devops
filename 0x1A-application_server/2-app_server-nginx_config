@@ -2,13 +2,20 @@
 # serve a page with Nginx
 
 server {
+  # listen to port 80
   listen 80;
+  # serves the server
   server_name 54.236.41.226;
   
+  # location is the page
   location /airbnb-onepage/ {
+    # procy pass
     proxy_pass http://localhost:5000;
+    # proxy set header is host
     proxy_set_header Host "$host";
+    # peoxy set header ip
     proxy_set_header X-Real-IP "$remote_adr";
+    # proxy set header x forwarded
     proxy_set_header X-Forwarded-For "$proxy_add_x_forwarded_for";
   }
 }
