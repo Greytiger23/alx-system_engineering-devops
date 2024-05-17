@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+# config file 5
+server {
+    listen 80;
+    server_name 54.236.41.226;
+
+    location / {
+        proxy_pass http://localhost:5003/2-hbnb;
+    }
+
+    location /static/ {
+        alias AirBnB_clone_v4/web_dynamic/static/;
+    }
+}

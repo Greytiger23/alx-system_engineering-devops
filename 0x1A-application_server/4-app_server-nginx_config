@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+# config file for nginx api
+
+server {
+    listen 80;
+    server_name 54.236.41.226;
+
+    location /api {
+        proxy_pass http://127.0.0.1:5002/api;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+    }
+}
